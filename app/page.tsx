@@ -31,7 +31,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <section className="h-screen w-full"></section>
     </>
   );
 }
