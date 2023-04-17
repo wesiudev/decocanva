@@ -1,6 +1,5 @@
 "use client";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Image from "next/image";
 import { auth } from "../../../firebase/config";
 import { useState } from "react";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
