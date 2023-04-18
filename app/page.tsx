@@ -13,7 +13,7 @@ export default function Home() {
           <div className="text-4xl lg:text-8xl xl:text-9xl text-gray-50 font-bold text-center sm:text-left shadow-neutral-600 z-30">
             Deco<span className="text-purple-500 lg:text-gray-50">canva</span>
           </div>
-          <div className="ml-1 mt-3 text-xl xl:text-3xl text-gray-50 text-center sm:text-left z-30">
+          <div className="mt-3 text-xl xl:text-3xl text-gray-50 text-center sm:text-left z-30">
             We are not scared of{" "}
             <span className="lg:text-purple-600 text-gray-50">AI</span> on{" "}
             <span className="lg:text-purple-600 text-gray-50">canvas</span>

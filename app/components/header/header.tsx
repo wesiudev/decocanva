@@ -20,7 +20,9 @@ export default function Header() {
             </Link>
           </div>
           <ul className="flex flex-row items-center text-gray-100">
-            <li className="mx-3">Shop</li>
+            <li className="mx-3">
+              <Link href="/contact">Contact</Link>
+            </li>
             <li className="mx-3">Blog</li>
             <li className="mx-3">About</li>
           </ul>
