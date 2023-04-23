@@ -20,9 +20,9 @@ export default function Contact() {
                 Email address
               </label>
               <input
-                type="text"
+                type="email"
                 id="email"
-                className="w-full lg:w-3/4 mt-3 rounded-md outline-none border-2 focus:border-blue-900 p-2 text-xl"
+                className="w-full lg:w-3/4 mt-3 rounded-md text-white p-2 outline-none bg-purple-700 focus:bg-purple-700 text-xl bg-opacity-60 focus:bg-opacity-80 placeholder:text-gray-50 placeholder:text-opacity-90"
                 placeholder="Enter your email here"
               />
             </div>
@@ -32,8 +32,8 @@ export default function Contact() {
               </label>
               <textarea
                 id="message"
-                className="w-full lg:w-3/4 mt-3 rounded-md outline-none border-2 focus:border-blue-900 p-2 text-xl"
-                placeholder="What can we help you with?"
+                className="w-full lg:w-3/4 mt-3 rounded-md text-white p-2 outline-none bg-purple-700 text-xl bg-opacity-60 placeholder:text-gray-50 focus:bg-opacity-80 focus:bg-purple-600 placeholder:text-opacity-90"
+                placeholder="How can we help you?"
               />
             </div>
             <button className="w-full lg:w-3/4 bg-purple-700 p-3 rounded-md text-gray-50 hover:bg-purple-600 text-xl">
