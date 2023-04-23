@@ -9,12 +9,12 @@ export default function Header() {
   const [isNavOpen, setNavOpen] = useState(false);
   return (
     <>
-      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-screen z-40">
-        <div className="sm:w-4/5 lg:w-3/4 mx-auto flex flex-row justify-between py-2 px-3 lg:px-0">
+      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-40">
+        <div className="w-[90vw] mx-auto flex flex-row justify-between py-3">
           <div className="flex flex-row w-max h-max">
             <Link
               href="/"
-              className="flex items-center text-gray-100 lg:text-2xl text-xl py-2"
+              className="flex items-center text-gray-100 text-2xl py-2"
             >
               decocanva
             </Link>
