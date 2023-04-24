@@ -1,8 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BackpackEmpty from "./scenerios/BackpackEmpty";
-
+import { getAllImages } from "@/firebase";
 export default function Backpack() {
-  const [backpackEmpty, setBackpackEmpty] = useState(true);
-  return <>{backpackEmpty && <BackpackEmpty />}</>;
+  const [backpackEmpty, setBackpackEmpty] = useState(false);
+
+  useEffect(() => {
+    getAllImages();
+  }, []);
+
+  return (
+    <>
+      {backpackEmpty && <BackpackEmpty />}
+      {!backpackEmpty && <div></div>}
+    </>
+  );
 }

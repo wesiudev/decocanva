@@ -8,7 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { provider, auth } from "../../firebase/config";
+import { provider, auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleAuthButtons from "./GoogleAuth";
 import Hero from "./hero/Hero";
