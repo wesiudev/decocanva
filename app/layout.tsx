@@ -1,3 +1,4 @@
+import { Providers } from "@/common/redux/Provider";
 import "../styles/globals.css";
 import { Montserrat } from "next/font/google";
 
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`font-sans ${montserrat.variable}`}>{children}</body>
+      <body className={`font-sans ${montserrat.variable}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

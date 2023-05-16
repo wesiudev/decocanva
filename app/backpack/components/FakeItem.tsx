@@ -1,0 +1,19 @@
+import { FaImage } from "react-icons/fa";
+
+interface FakeItem {
+  idx: number;
+}
+
+export const FakeItem = () => {
+  return (
+    <div
+      className="bg-gradient-to-r 
+            from-purple-600
+            vie-purple-800
+            to-purple-950
+            animate-gradient-x aspect-square flex items-center justify-center"
+    >
+      <FaImage className="w-10 h-10 text-white opacity-70" />
+    </div>
+  );
+};
