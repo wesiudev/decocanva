@@ -12,7 +12,7 @@ import { redirect } from "next/navigation";
 import { useUserData } from "../../hooks/useUserData";
 
 export default function BackpackEmpty() {
-  const { images, user } = useUserData();
+  const { images, userData } = useUserData();
   const [isGenerationPending, setIsGenerationPending] =
     useState<boolean>(false);
   const [userPrompt, setUserPrompt] = useState("");
@@ -34,7 +34,7 @@ export default function BackpackEmpty() {
 
   return (
     <>
-      {user && (
+      {userData && (
         <Link
           href="/dashboard"
           className="absolute hover:underline left-[4vw] top-[24px] sm:top-[4vw]  text-white flex flex-row items-center text-2xl z-50"
