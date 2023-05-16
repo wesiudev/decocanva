@@ -8,29 +8,32 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { provider, auth } from "../../firebase";
+import { provider, auth } from "../../common/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleAuthButtons from "./GoogleAuth";
 import Hero from "./hero/Hero";
 import { Canvas } from "@react-three/fiber";
-import FadingImage from "./hero/Images";
+// import FadingImage from "./hero/Images";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import { FaEnvelope, FaKey } from "react-icons/fa";
+import Loading from "./loading";
+import { useUserData } from "../hooks/useUserData";
 
 export default function Login() {
+  const { user, loading } = useUserData();
   const [isLoginUser, setIsLoginUser] = useState(true);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [user, loading] = useAuthState(auth);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (user) {
-    return redirect("/dashboard");
+    redirect("/dashboard");
   }
   function handleLogin() {
     signInWithRedirect(auth, provider);
@@ -39,7 +42,9 @@ export default function Login() {
         // This gives you a Google Access Token. You can use it to access Google APIs.
         const credential = GoogleAuthProvider.credentialFromResult(result!);
         const token = credential?.accessToken;
-
+        if (token) {
+          redirect("/dashboard");
+        }
         // The signed-in user info.
         const user = result?.user;
       })
@@ -130,7 +135,7 @@ export default function Login() {
               style={{ zIndex: "20" }}
               camera={{ position: [0, 0, 2], fov: 50 }}
             >
-              <FadingImage />
+              {/* <FadingImage /> */}
             </Canvas>
           </div>
           <Hero />
@@ -148,7 +153,9 @@ export default function Login() {
 
             <div className="mt-6">
               <div>
-                <label className="block text-gray-700">Email Address</label>
+                <label className="flex flex-row items-center text-gray-700">
+                  <FaEnvelope className="mr-1" /> Email Address
+                </label>
                 <input
                   type="text"
                   onChange={(e) => setEmail(e.target.value)}
@@ -164,7 +171,10 @@ export default function Login() {
               </div>
 
               <div className="mt-4">
-                <label className="block text-gray-700">Password</label>
+                <label className="flex flex-row items-center text-gray-700">
+                  <FaKey className="mr-1" />
+                  Password
+                </label>
                 <input
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}

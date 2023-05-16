@@ -5,7 +5,11 @@ import {
   collection,
   getDocs,
   addDoc,
+  query,
+  where,
 } from "firebase/firestore/lite";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -20,24 +24,29 @@ const provider = new GoogleAuthProvider();
 
 const auth = getAuth(app);
 
-const firestore = initializeApp(firebaseConfig);
-const db = getFirestore(firestore);
+const db = getFirestore(app);
+
+const storage = getStorage(app);
 
 //db interactions
 
 const collectionRef = collection(db, "images");
-async function getAllImages() {
-  const imagesSnapshot = await getDocs(collectionRef);
-  const imageList = imagesSnapshot.docs.map((doc) => doc.data());
-  console.log(imageList);
-  return imageList;
+
+async function getAllImages(setUserImages) {
+  const response = await getDocs(collectionRef);
+  const images = response.docs.map((doc) => doc.data());
+  setUserImages(images);
+}
+
+async function getUserImages(userEmail) {
+  const filter = query(collectionRef, where("author", "==", userEmail));
+  const response = await getDocs(filter);
+  const images = response.docs.map((doc) => doc.data());
+  return images;
 }
 
 async function addImage(req) {
-  const imagesSnapshot = await addDoc(collectionRef, req);
-  const imageList = imagesSnapshot.docs.map((doc) => doc.data());
-  console.log(imageList);
-  return imageList;
+  await addDoc(collectionRef, req);
 }
 
-export { provider, auth, getAllImages };
+export { provider, storage, auth, getAllImages, getUserImages, addImage };

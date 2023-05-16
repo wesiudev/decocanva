@@ -1,23 +1,65 @@
+import { openai } from "@/common/openai/config";
 import { FaImage } from "react-icons/fa";
+export default function GenerateButton(props: any) {
+  const {
+    setIsGenerationPending,
+    setImageLoaded,
+    setImageResponse,
+    setHasImage,
+    userPrompt,
+    size,
+    isGenerationPending,
+    setIsGenerationTriggered,
+    setIsError,
+    isError,
+    displayError,
+  } = props;
 
-export default function GenerateButton({
-  isGenerationTriggered,
-  handleImageGeneration,
-}) {
+  const generateImage = async () => {
+    try {
+      setIsError(false);
+      setIsGenerationPending(true);
+      setImageLoaded(false);
+      const imageParameters: any = {
+        prompt: userPrompt,
+        //n: parseInt(number),
+        n: 1,
+        size: size,
+        response_format: "b64_json",
+      };
+      const response = await openai.createImage(imageParameters);
+      const image = response.data.data[0].b64_json;
+      setImageResponse(image);
+      setIsGenerationPending(false);
+      setHasImage(true);
+    } catch (error: any) {
+      setIsGenerationPending(false);
+      setIsError(true);
+      displayError(error.response.data.error.message);
+    }
+  };
+
+  const handleImageGeneration = async () => {
+    generateImage();
+    setIsGenerationTriggered(true);
+  };
+
   return (
     <>
       <button
-        disabled={isGenerationTriggered}
-        className="flex flex-row items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8"
-        onClick={() => handleImageGeneration()}
+        disabled={isGenerationPending || isError}
+        className={`disabled:${
+          isError ? "bg-red-500" : "bg-purple-500"
+        } disabled:opacity-50 disabled:cursor-not-allowed flex flex-row items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8`}
+        onClick={handleImageGeneration}
       >
-        {!isGenerationTriggered && (
+        {!isGenerationPending && (
           <>
             <FaImage className="mr-1 mt-1" /> <span> Generate</span>{" "}
           </>
         )}
 
-        {isGenerationTriggered && (
+        {isGenerationPending && (
           <div role="status">
             <svg
               aria-hidden="true"
