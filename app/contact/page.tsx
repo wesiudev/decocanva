@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import { FaEnvelope, FaPhone } from "react-icons/fa";
+import Header from "../components/header";
+import { FaPhone } from "react-icons/fa";
 export default function Contact() {
   return (
     <>
