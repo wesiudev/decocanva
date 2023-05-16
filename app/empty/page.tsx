@@ -28,7 +28,7 @@ export default function BackpackEmpty() {
     });
   };
 
-  if (images) {
+  if (images.length) {
     redirect("/backpack");
   }
 
