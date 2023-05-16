@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
-import InterfaceBlock from "./InterfaceBlock";
+import InterfaceBlock from "./components/InterfaceBlock";
 import { BsBodyText } from "react-icons/bs";
 import { TbPrompt } from "react-icons/tb";
 
@@ -27,13 +27,13 @@ export default function Generator() {
           title="Render image from text"
           Icon={BsBodyText}
           description="You can render an image by writing a description for our generator."
-          destination="render-from-text"
+          destination="text"
         />
         <InterfaceBlock
           title="Render image with Prompter"
           Icon={TbPrompt}
           description="Use prompter to render images by describing details step by step."
-          destination="render-with-prompter"
+          destination="prompter"
         />
       </div>
     </div>

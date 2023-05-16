@@ -2,7 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  images: []
+  images: [],
+  loadingImages: false
 };
 
 export const imagesSlice = createSlice({
@@ -10,7 +11,9 @@ export const imagesSlice = createSlice({
   initialState,
   reducers: {
     setImages: (state, action) => {
+      state.loadingImages = true
       state.images = [...state.images, ...action.payload]
+      state.loadingImages = false
     },
     clearImages: (state, action) => {
       state.images = []

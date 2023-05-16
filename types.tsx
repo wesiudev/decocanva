@@ -5,9 +5,14 @@ export type ImageProps = {
   isPublic: boolean;
   likes: number;
   comments: [];
-  creationTime: any;
+  creationTime: number;
 };
 
 export type ImagesArray = {
   userImages: ImageProps[];
+};
+
+export type AccountHistoryItem = {
+  creationTime: number;
+  action: string;
 };

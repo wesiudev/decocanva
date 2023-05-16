@@ -1,9 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  sendEmailVerification,
+} from "firebase/auth";
 import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   addDoc,
   query,
   where,
@@ -28,25 +33,67 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-//db interactions
+//images
 
-const collectionRef = collection(db, "images");
+const imagesRef = collection(db, "images");
 
 async function getAllImages(setUserImages) {
-  const response = await getDocs(collectionRef);
+  const response = await getDocs(imagesRef);
   const images = response.docs.map((doc) => doc.data());
   setUserImages(images);
 }
 
-async function getUserImages(userEmail) {
-  const filter = query(collectionRef, where("author", "==", userEmail));
+async function getUserImages(email) {
+  const filter = query(imagesRef, where("author", "==", email));
   const response = await getDocs(filter);
   const images = response.docs.map((doc) => doc.data());
   return images;
 }
 
 async function addImage(req) {
-  await addDoc(collectionRef, req);
+  await addDoc(imagesRef, req);
 }
 
-export { provider, storage, auth, getAllImages, getUserImages, addImage };
+//users
+const usersRef = collection(db, "users");
+async function getUser(req) {
+  const filter = query(usersRef, where("email", "==", req.email));
+  const response = await getDocs(filter);
+  const user = response.docs.map((doc) => doc.data());
+  if (user[0]?.email === req.email) {
+    return user[0];
+  } else if (!user.length) {
+    const accountHistory = [
+      { creationTime: Date.now(), action: "Joined decocanva" },
+    ];
+    const newUser = {
+      email: req.email,
+      hasPlan: false,
+      balance: 300,
+      tutorialStep: 0,
+      accountHistory,
+      isPrivate: true,
+      isVerified: false,
+      displayName: req.displayName,
+    };
+    await addDoc(usersRef, newUser);
+    const response = await getDocs(filter);
+    const user = response.docs.map((doc) => doc.data());
+    return user[0];
+  }
+}
+//\\///\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
+export {
+  //providers
+  provider,
+  storage,
+  auth,
+  //images
+  getAllImages,
+  getUserImages,
+  addImage,
+  //users
+  getUser,
+};

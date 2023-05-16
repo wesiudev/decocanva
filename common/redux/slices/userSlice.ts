@@ -1,8 +1,9 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
+import { redirect } from "next/navigation";
 
 const initialState: any = {
-  user: {}
+  userData: {}
 };
 
 export const userSlice = createSlice({
@@ -10,10 +11,11 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = state.user = action.payload
+      state.userData = action.payload
     },
     logout: (state) => {
-      state.user = [state.user, {}]
+      state.userData = {}
+      redirect("/auth")
     },
   },
 });

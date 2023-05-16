@@ -8,8 +8,8 @@ import { GiLightBackpack } from "react-icons/gi";
 import InfoHover from "@/app/components/infohover";
 export const BackpackModal = ({ images }: DocumentData) => {
   return (
-    <div className="sm:mt-0 flex flex-col bg-purple-700  text-gray-100 p-3 sm:p-5 min-h-[30vh]">
-      <div className="w-full flex flex-row items-center justify-between">
+    <>
+      <div className="w-full flex flex-row items-center justify-between bg-purple-900 rounded-md text-gray-100 p-5">
         <div className="w-max relative">
           {/* <InfoHover
             description="In your backpack you will find tools that will be useful for creating and editing images. You can also change visibility of your images here, if you want to share or hide them. Saved images will apear here."
@@ -41,17 +41,18 @@ export const BackpackModal = ({ images }: DocumentData) => {
           </Link>
         </div>
       </div>
-      <div className="border-t-2 border-purple-600 mt-4 mb-2" />
-      {!images.length ? (
-        <div className="text-2xl text-gray-400 mt-1 mb-4 min-h-[30vh] flex items-center justify-center text-center">
-          Your backpack is empty
-        </div>
-      ) : (
-        <div className="grid grid-rows sm:grid-cols-2 lg:grid-cols-3">
-          <Latest images={images} />
-          <Popular images={images} />
-        </div>
-      )}
-    </div>
+      <div className="mt-2 flex flex-col bg-purple-900 rounded-md text-gray-100 p-5">
+        {!images.length ? (
+          <div className="text-2xl text-gray-400 mt-1 mb-4 min-h-[30vh] flex items-center justify-center text-center">
+            Your backpack is empty
+          </div>
+        ) : (
+          <div className="grid grid-rows sm:grid-cols-2 lg:grid-cols-3 gap-x-3">
+            <Latest images={images} />
+            <Popular images={images} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };

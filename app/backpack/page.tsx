@@ -7,9 +7,10 @@ import { FakeItem } from "./components/FakeItem";
 import { ImageProps } from "@/types";
 import { useUserData } from "../hooks/useUserData";
 import { redirect } from "next/navigation";
+import Info from "../components/info";
 
 export default function Backpack() {
-  const { images, user, loading } = useUserData();
+  const { images, loading } = useUserData();
   if (!images.length && !loading) {
     redirect("backpack/empty");
   }
@@ -29,21 +30,12 @@ export default function Backpack() {
           </div>
           <div className="ml-3">Backpack</div>
         </div>
-        <div className="py-3 px-3 bg-zinc-700 rounded-lg mt-6 text-white">
-          <div className="flex flex-col lg:flex-row lg:justify-between">
-            <div className="flex flex-row items-center">
-              <BsInfoCircleFill className="h-5 w-5 mr-2" />
-              In order to share your images, you have to switch your profile
-              settings to public.
-            </div>
-            <Link
-              href="/privacy"
-              className="py-2 lg:py-1 lg:px-2 lg:mt-0 lg:ml-2 w-full lg:w-max text-center mt-2 rounded-lg bg-purple-700 hover:bg-purple-600"
-            >
-              <strong className="ml-1 mr-1">Change it here</strong>
-            </Link>
-          </div>
-        </div>
+        <Info
+          destination="privacy"
+          buttonText="Change it here"
+          text="In order to share your images, you have to switch your profile
+              settings to public."
+        />
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-6">
         {images.length ? (
@@ -67,9 +59,9 @@ export default function Backpack() {
 
         <Link
           href="/backpack/generator"
-          className="bg-purple-700 flex items-center justify-center hover:bg-purple-600 aspect-square"
+          className="bg-purple-700 flex items-center justify-center hover:bg-purple-600 aspect-square rounded-md"
         >
-          <FaPlus className="w-[50%] h-[50%] text-purple-950" />
+          <FaPlus className="w-[30%] h-[30%] text-purple-950" />
         </Link>
       </div>
     </div>

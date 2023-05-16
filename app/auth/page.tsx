@@ -22,7 +22,7 @@ import Loading from "./loading";
 import { useUserData } from "../hooks/useUserData";
 
 export default function Login() {
-  const { user, loading } = useUserData();
+  const [user, loading] = useAuthState(auth);
   const [isLoginUser, setIsLoginUser] = useState(true);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [email, setEmail] = useState<string>("");
@@ -32,7 +32,7 @@ export default function Login() {
   if (loading) {
     return <Loading />;
   }
-  if (user) {
+  if (user && !loading) {
     redirect("/dashboard");
   }
   function handleLogin() {

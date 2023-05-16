@@ -9,7 +9,7 @@ export default function BackpackImageThumbnail(props: BackpackThumbnail) {
   return (
     <Image
       priority={true}
-      className="w-full"
+      className="rounded-md"
       width={512}
       height={512}
       src={src}

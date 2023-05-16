@@ -1,5 +1,6 @@
 import { FaCog, FaImage, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { GiLightBackpack } from "react-icons/gi";
+import { SlBadge } from "react-icons/sl";
 
 export default function Loading() {
   return (
@@ -27,6 +28,13 @@ export default function Loading() {
           <div className="border-t-2 border-purple-600 mt-4 mb-2" />
         </div>
         <div className="grid grid-rows gap-y-6 sm:grid-cols-2 lg:grid-cols-3 sm:grid-rows-1 sm:gap-6 w-full mt-6">
+          <div className="bg-purple-800 w-full min-h-[40vh] p-6">
+            <div className="flex flex-row items-center ">
+              <SlBadge className="w-8 h-8 mr-2 text-gray-50" />
+              <div className="h-[25px] w-3/4 bg-purple-900"></div>
+            </div>
+            <div className="border-t-2 border-purple-600 mt-4 mb-2" />
+          </div>
           <div className="bg-purple-800 w-full min-h-[40vh] p-6">
             <div className="flex flex-row items-center ">
               <GiLightBackpack className="w-8 h-8 mr-2 text-gray-50" />
