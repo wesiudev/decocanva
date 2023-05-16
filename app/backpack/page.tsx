@@ -2,13 +2,17 @@
 import Link from "next/link";
 import { FaArrowLeft, FaPlus } from "react-icons/fa";
 import { BsInfoCircleFill } from "react-icons/bs";
-import BackpackImageThumbnail from "./components/BackpackImageThumbnail";
+import BackpackImageThumbnail from "./components/ImageThumbnail";
 import { FakeItem } from "./components/FakeItem";
 import { ImageProps } from "@/types";
 import { useUserData } from "../hooks/useUserData";
+import { redirect } from "next/navigation";
 
 export default function Backpack() {
   const { images, user, loading } = useUserData();
+  if (!images.length && !loading) {
+    redirect("backpack/empty");
+  }
   return (
     <div className="w-[95vw] sm:w-3/4 mx-auto">
       <Link

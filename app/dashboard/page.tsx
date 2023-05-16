@@ -8,7 +8,7 @@ import { BackpackModal } from "./modals/backpack/Backpack";
 import { useUserData } from "../hooks/useUserData";
 import Loading from "./loading";
 import { redirect } from "next/navigation";
-import InfoHover from "../components/infohover/infohover";
+import InfoHover from "../components/infohover";
 
 export default function Dashboard() {
   const { images, user, loading } = useUserData();
