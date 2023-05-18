@@ -1,12 +1,48 @@
 import { Providers } from "@/common/redux/Provider";
 import "../styles/globals.css";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "200", "400", "700"],
-  variable: "--font-montserrat",
+import localFont from "next/font/local";
+export const metadata = {
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+const cocosharp = localFont({
+  src: [
+    {
+      path: "../public/fonts/Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../public/fonts/ExtraLight.ttf",
+      weight: "200",
+    },
+    {
+      path: "../public/fonts/Light.ttf",
+      weight: "300",
+    },
+    {
+      path: "../public/fonts/LightItalic.ttf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Regular.ttf",
+      weight: "500",
+    },
+  ],
+  variable: "--font-cocosharp",
 });
+
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export default function RootLayout({
@@ -16,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`font-sans `}>
+      <body className={`${cocosharp.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

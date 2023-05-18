@@ -20,8 +20,8 @@ export const BackpackModal = ({ images }: DocumentData) => {
             href={`${!images.length ? "/backpack/empty" : "/backpack"}`}
             className="group text-2xl sm:text-3xl flex flex-row items-center w-max relative"
           >
-            <GiLightBackpack className="w-8 h-8 mr-1 text-gray-50" />
-            <span>Backpack</span>
+            <GiLightBackpack className="w-8 h-8 text-gray-50" />
+            <span className="font-bold not-italic">Backpack</span>
             <FaArrowRight className="invisible w-4 h-4 ml-2 mt-1 group-hover:scale-150 group-hover:translate-x-1 group-hover:visible ease-in duration-75" />
           </Link>
         </div>
@@ -34,7 +34,7 @@ export const BackpackModal = ({ images }: DocumentData) => {
           >
             <div className="flex flex-row items-center bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in py-2 px-3 rounded-md shadow-sm shadow-purple-950">
               <FaPlus className="mr-1 w-5 h-5" />
-              <span className="hidden aspect-square sm:aspect-auto sm:block">
+              <span className="hidden aspect-square sm:aspect-auto sm:block font-light not-italic">
                 New image
               </span>
             </div>

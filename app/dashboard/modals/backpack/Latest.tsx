@@ -11,7 +11,7 @@ export const Latest = ({ images }: DocumentData) => {
     <div className="flex flex-col sm:pr-3 overflow-x-hidden ">
       <div className="flex flex-row items-center text-xl mb-2">
         <FaFire className="text-red-500" />{" "}
-        <span className="ml-1"> Latest </span>
+        <span className="ml-1 not-italic font-light"> Latest </span>
       </div>
       <div className="bg-purple-800 p-2 rounded-md">
         {cloneImages?.map((image, idx) => (

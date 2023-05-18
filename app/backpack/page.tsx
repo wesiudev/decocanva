@@ -15,12 +15,12 @@ export default function Backpack() {
     redirect("backpack/empty");
   }
   return (
-    <div className="w-[95vw] sm:w-3/4 mx-auto">
+    <div className="w-[95vw] sm:w-3/4 mx-auto font-sans">
       <Link
         href="/dashboard"
         className="pt-[24px] sm:pt-[4vw] hover:underline text-white flex flex-row items-center text-2xl z-50 w-max"
       >
-        <FaArrowLeft /> <span className="ml-1 font-light">Dashboard</span>
+        <FaArrowLeft /> <span className="ml-1">Dashboard</span>
       </Link>
       <div className="mx-auto pt-12">
         <div className="text-gray-50 text-4xl flex flex-row w-full">
@@ -28,7 +28,7 @@ export default function Backpack() {
             <div className="opacity-80 h-5 w-2 bg-purple-800 hue-rotate-60 rotate-[20deg] rounded-sm" />
             <div className="opacity-80 h-4 w-1 bg-purple-800 -rotate-45 rounded-sm" />
           </div>
-          <div className="ml-3">Backpack</div>
+          <div className="ml-3 italic ">Backpack</div>
         </div>
         <Info
           destination="privacy"

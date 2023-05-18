@@ -29,11 +29,11 @@ export default function BackpackEmpty() {
   };
 
   if (images.length) {
-    redirect("/backpack");
+    // redirect("/backpack");
   }
 
   return (
-    <>
+    <div className="font-sans">
       {userData && (
         <Link
           href="/dashboard"
@@ -123,6 +123,6 @@ export default function BackpackEmpty() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

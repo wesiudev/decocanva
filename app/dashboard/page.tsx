@@ -35,7 +35,7 @@ export default function Dashboard() {
     <>
       {(!images || loading) && <Loading />}
       {images && !loading && (
-        <div className="mx-auto w-[90vw] py-12">
+        <div className="mx-auto w-[90vw] py-12 font-sans italic">
           <div className="text-gray-50 text-4xl flex flex-row w-full">
             <div className="ml-2">
               <div className="opacity-80 h-5 w-2 bg-purple-800 hue-rotate-60 rotate-[20deg] rounded-sm" />
@@ -57,7 +57,7 @@ export default function Dashboard() {
           <div className="w-[90vw] mt-12">
             <div className="w-full text-2xl lg:text-3xl text-gray-100">
               <div className="flex flex-row items-center justify-between w-full bg-purple-900 p-5 rounded-md">
-                <div className="flex flex-row items-center ">
+                <div className="flex flex-row items-center not-italic font-bold">
                   <FaUser className="mr-1 text-2xl" />
                   {userData?.displayName
                     ? userData?.displayName
@@ -66,7 +66,7 @@ export default function Dashboard() {
               </div>
               <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 w-full mt-2">
                 <div className="bg-purple-900 rounded-md p-5 w-full">
-                  <span className="text-3xl">Details</span>
+                  <span className="text-3xl not-italic">Details</span>
                   <div className="flex flex-col mt-2">
                     <div className="text-xl flex flex-row items-center mt-2">
                       <FaEnvelope className="h-6 w-6 mr-1 mt-[2px]" />
@@ -90,7 +90,7 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="p-5 h-full bg-purple-900 rounded-md w-full mt-2 sm:mt-0">
-                  <span className="text-3xl">History</span>
+                  <span className="text-3xl not-italic">History</span>
                   {userData?.accountHistory?.length && (
                     <div className="h-[35vh]">
                       {userData?.accountHistory?.map(
@@ -98,10 +98,13 @@ export default function Dashboard() {
                           <div className="flex flex-col mt-4" key={idx}>
                             <div className="flex flex-row items-center">
                               <FaClock className="w-6 h-6 mt-px mr-1" />
-                              <span className="text-lg">
+                              <span className="text-lg not-italic">
                                 {moment(item.creationTime).format(
                                   "DD-MM-yyyy hh:mm a"
-                                )}
+                                )}{" "}
+                              </span>
+                              <span className="text-green-400 font-light text-sm ml-1 hidden lg:block">
+                                {`(${moment(item.creationTime).fromNow()})`}
                               </span>
                             </div>
                             <span className="text-lg flex flex-row items-center">
@@ -118,7 +121,7 @@ export default function Dashboard() {
             </div>
             <div className={`w-full mt-6`}>
               <BackpackModal images={images} />
-              <div className="mt-6 gap-x-3 grid sm:grid-cols-2">
+              <div className="mt-6 gap-x-3 grid sm:grid-cols-2 gap-y-6 sm:gap-y-0">
                 <GalleryModal />
                 <SettingsModal />
               </div>

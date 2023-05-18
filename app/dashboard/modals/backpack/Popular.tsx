@@ -17,7 +17,7 @@ export const Popular = ({ images }: DocumentData) => {
       <div className="flex flex-col sm:pr-3 overflow-x-hidden mt-2 sm:mt-0">
         <div className="flex flex-row items-center text-xl mb-2">
           <FaRocket className="text-blue-600" />{" "}
-          <span className="ml-1">Popular</span>
+          <span className="ml-1 not-italic font-light">Popular</span>
         </div>
         {sortedByPopularity.length ? (
           <div className="bg-purple-800 p-2 rounded-md">
@@ -72,9 +72,9 @@ export const Popular = ({ images }: DocumentData) => {
                 href={`/browse`}
                 className="mt-2 sm:mt-0 py-2 lg:py-1 lg:mt-0 sm:ml-3 w-full sm:w-1/4 text-center rounded-lg bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in px-3 shadow-sm shadow-purple-950 h-full"
               >
-                <strong className="mr-1 px-3 sm:py-2 flex items-center justify-center">
+                <span className="mr-1 px-3 sm:py-2 flex items-center justify-center font-bold not-italic">
                   Browse
-                </strong>
+                </span>
               </Link>
             </div>
           </div>

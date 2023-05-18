@@ -1,13 +1,15 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { addImage, auth, storage } from "@/common/firebase";
+import { addImage, auth, getUserImages, storage } from "@/common/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
 import { FaImage } from "react-icons/fa";
 import { redirect } from "next/navigation";
+import { setImages } from "@/common/redux/slices/imagesSlice";
+import { useDispatch } from "react-redux";
 
 export default function FirstGenerationPopup(props: any) {
   const {
@@ -24,11 +26,14 @@ export default function FirstGenerationPopup(props: any) {
     isError,
   } = props;
   const [user, loading] = useAuthState(auth);
+  const dispatch = useDispatch();
 
   const saveImage = async () => {
     if (hasImage)
       try {
-        const id = toast.loading("Saving an image...");
+        const id = toast.loading(
+          <span className="font-sans">Saving an image...</span>
+        );
         //in pseudo randomness we trust 🙏
         const pseudoRandomName = Math.floor(
           Math.random() * 9999 * 100
@@ -56,6 +61,7 @@ export default function FirstGenerationPopup(props: any) {
                 closeOnClick: true,
                 autoClose: 5000,
                 onClose: () => (
+                  getUserImages(user).then((res) => dispatch(setImages(res))),
                   setHasImage(false),
                   setIsGenerationTriggered(false),
                   redirect("/backpack")

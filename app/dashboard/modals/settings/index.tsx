@@ -2,7 +2,7 @@ import { FaCog } from "react-icons/fa";
 
 export const SettingsModal = () => {
   return (
-    <div className="flex flex-col bg-purple-900 text-gray-100 p-5 rounded-md">
+    <div className="flex flex-col bg-purple-900 text-gray-100 p-5 rounded-md not-italic font-bold">
       <div className="text-2xl sm:text-3xl flex flex-row items-center">
         <FaCog className=" mr-1 mt-1" /> Settings
       </div>

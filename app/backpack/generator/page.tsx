@@ -27,13 +27,13 @@ export default function Generator() {
           title="Render image from text"
           Icon={BsBodyText}
           description="You can render an image by writing a description for our generator."
-          destination="text"
+          destination="GenerateFromText"
         />
         <InterfaceBlock
           title="Render image with Prompter"
           Icon={TbPrompt}
           description="Use prompter to render images by describing details step by step."
-          destination="prompter"
+          destination="GenerateWithPrompter"
         />
       </div>
     </div>

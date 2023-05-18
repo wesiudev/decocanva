@@ -3,7 +3,7 @@ import Header from "./components/header";
 export default function Home() {
   return (
     <>
-      <main className="relative overflow-hidden items-center min-h-screen bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 flex flex-row py-2 px-3 lg:px-0">
+      <main className="font-sans relative overflow-hidden items-center min-h-screen bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 flex flex-row py-2 px-3 lg:px-0">
         <Header />
         <span className="opacity-0 xl:opacity-75 w-24 h-24 rounded-full absolute left-12 top-24 from-zinc-900 to-purple-800 bg-gradient-to-br shadow-sm shadow-black" />
         <span className="opacity-0 xl:opacity-75 w-8 h-8 rounded-full absolute left-6 top-20 from-zinc-900 to-purple-900 bg-gradient-to-tl shadow-sm shadow-black" />
@@ -13,7 +13,7 @@ export default function Home() {
           <div className="text-4xl lg:text-8xl xl:text-9xl text-gray-50 font-bold text-center sm:text-left shadow-neutral-600 z-30">
             Deco<span className="text-purple-500 lg:text-gray-50">canva</span>
           </div>
-          <div className="mt-3 text-xl xl:text-3xl text-gray-50 text-center sm:text-left z-30">
+          <div className="font-light italic mt-3 text-xl xl:text-3xl text-gray-50 text-center sm:text-left z-30">
             We are not scared of{" "}
             <span className="lg:text-purple-600 text-gray-50">AI</span> on{" "}
             <span className="lg:text-purple-600 text-gray-50">canvas</span>

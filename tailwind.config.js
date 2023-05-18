@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-cocosharp)"],
+      },
       animation: {
         "gradient-x": "gradient-x 1.75s ease infinite",
         "gradient-y": "gradient-y 1.75s ease infinite",
