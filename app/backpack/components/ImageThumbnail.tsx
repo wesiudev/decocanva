@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 interface BackpackThumbnail {
@@ -8,7 +9,7 @@ export default function BackpackImageThumbnail(props: BackpackThumbnail) {
   const { src } = props;
   return (
     <Image
-      priority={true}
+      priority
       className="rounded-md"
       width={512}
       height={512}

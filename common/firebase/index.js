@@ -8,10 +8,14 @@ import {
   getFirestore,
   collection,
   getDocs,
-  getDoc,
   addDoc,
   query,
   where,
+  limit,
+  orderBy,
+  updateDoc,
+  doc,
+  arrayUnion,
 } from "firebase/firestore/lite";
 import { getStorage } from "firebase/storage";
 
@@ -37,14 +41,13 @@ const storage = getStorage(app);
 
 const imagesRef = collection(db, "images");
 
-async function getAllImages(setUserImages) {
-  const response = await getDocs(imagesRef);
-  const images = response.docs.map((doc) => doc.data());
-  setUserImages(images);
-}
-
-async function getUserImages(email) {
-  const filter = query(imagesRef, where("author", "==", email));
+async function getUserImages(email, count) {
+  const filter = query(
+    imagesRef,
+    orderBy("creationTime", "desc"),
+    where("author", "==", email),
+    limit(count)
+  );
   const response = await getDocs(filter);
   const images = response.docs.map((doc) => doc.data());
   return images;
@@ -56,6 +59,15 @@ async function addImage(req) {
 
 //users
 const usersRef = collection(db, "users");
+
+async function getUserById(req) {
+  const filter = query(usersRef, where("email", "==", req.email));
+  const response = await getDocs(filter);
+  const user = response.docs.map((doc) => ({ id: doc.id }));
+  const userRef = doc(db, "users", user[0]?.id);
+  return userRef;
+}
+
 async function getUser(req) {
   const filter = query(usersRef, where("email", "==", req.email));
   const response = await getDocs(filter);
@@ -82,6 +94,19 @@ async function getUser(req) {
     return user[0];
   }
 }
+async function updateUserHistory(req) {
+  const userRef = await getUserById(req);
+  await updateDoc(userRef, {
+    accountHistory: arrayUnion(req.accountHistory),
+  });
+  // if (user[0].length === 2) {
+  //   user.accountHistory.sort((a, b) => a.creationTime - b.creationTime);
+  // }
+  // const accountHistory = [
+  //   { creationTime: Date.now(), action: "Joined decocanva" },
+  // ];
+}
+
 //\\///\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
@@ -91,9 +116,9 @@ export {
   storage,
   auth,
   //images
-  getAllImages,
   getUserImages,
   addImage,
   //users
   getUser,
+  updateUserHistory,
 };

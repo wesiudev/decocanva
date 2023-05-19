@@ -1,9 +1,5 @@
 import { FaImage } from "react-icons/fa";
 
-interface FakeItem {
-  idx: number;
-}
-
 export const FakeItem = () => {
   return (
     <div

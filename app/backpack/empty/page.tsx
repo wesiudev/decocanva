@@ -13,6 +13,7 @@ import { useUserData } from "../../hooks/useUserData";
 
 export default function BackpackEmpty() {
   const { images, userData } = useUserData();
+
   const [isGenerationPending, setIsGenerationPending] =
     useState<boolean>(false);
   const [userPrompt, setUserPrompt] = useState("");
@@ -28,7 +29,7 @@ export default function BackpackEmpty() {
     });
   };
 
-  if (images.length) {
+  if (images?.length > 0) {
     // redirect("/backpack");
   }
 

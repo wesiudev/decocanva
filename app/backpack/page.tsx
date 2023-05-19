@@ -8,19 +8,37 @@ import { ImageProps } from "@/types";
 import { useUserData } from "../hooks/useUserData";
 import { redirect } from "next/navigation";
 import Info from "../components/info";
+import { useSelector } from "react-redux";
+import { RootState } from "@/common/redux/store";
+import moment from "moment";
 
 export default function Backpack() {
-  const { images, loading } = useUserData();
-  if (!images.length && !loading) {
-    redirect("backpack/empty");
+  const { images } = useUserData();
+  const preparedData = [
+    {
+      today: images.filter((image: ImageProps) =>
+        moment(image?.creationTime).isSame(moment(), "day")
+      ),
+      yesterday: images.filter((image: ImageProps) =>
+        moment(image?.creationTime).isSame(moment().subtract(1, "day"), "day")
+      ),
+      older: images.filter((image: ImageProps) =>
+        moment(image?.creationTime).isBefore(moment().subtract(1, "day"), "day")
+      ),
+    },
+  ];
+  const { loadingImages } = useSelector((state: RootState) => state.images);
+  if (!images.length && !loadingImages) {
+    redirect("/backpack/empty");
   }
   return (
-    <div className="w-[95vw] sm:w-3/4 mx-auto font-sans">
+    <div className="w-[90vw] sm:w-3/4 mx-auto font-sans">
       <Link
         href="/dashboard"
         className="pt-[24px] sm:pt-[4vw] hover:underline text-white flex flex-row items-center text-2xl z-50 w-max"
       >
-        <FaArrowLeft /> <span className="ml-1">Dashboard</span>
+        <FaArrowLeft />
+        <span className="ml-1">Dashboard</span>
       </Link>
       <div className="mx-auto pt-12">
         <div className="text-gray-50 text-4xl flex flex-row w-full">
@@ -37,32 +55,95 @@ export default function Backpack() {
               settings to public."
         />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-6">
+      <div className="mt-12">
         {images.length ? (
-          images?.map((image: ImageProps, idx: number) => (
-            <div key={idx}>
-              <BackpackImageThumbnail src={image.src} />
-            </div>
-          ))
-        ) : (
           <>
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
+            {preparedData?.map((timestamp: any, idx: number) => (
+              <>
+                <>
+                  {timestamp.today.length > 0 && (
+                    <>
+                      <span className="text-3xl font-light text-purple-200">
+                        Today
+                      </span>
+                      <div
+                        key={idx}
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 my-6"
+                      >
+                        {timestamp.today.map(
+                          (image: ImageProps, idx: number) => (
+                            <BackpackImageThumbnail
+                              key={idx}
+                              src={image?.src}
+                            />
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
+                </>
+                <>
+                  {timestamp.yesterday.length > 0 && (
+                    <>
+                      <span className="text-3xl font-light text-purple-200">
+                        Yesterday
+                      </span>
+                      <div
+                        key={idx}
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 my-6"
+                      >
+                        {timestamp.yesterday.map(
+                          (image: ImageProps, idx: number) => (
+                            <BackpackImageThumbnail
+                              key={idx}
+                              src={image?.src}
+                            />
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
+                </>
+                <>
+                  {timestamp.older.length > 0 && (
+                    <>
+                      <span className="text-3xl font-light text-purple-200">
+                        {timestamp.older.length &&
+                        (timestamp.yesterday.length || timestamp.today.length)
+                          ? "Older"
+                          : "Older than two days"}
+                      </span>
+                      <div
+                        key={idx}
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 my-6"
+                      >
+                        {timestamp.older.map(
+                          (image: ImageProps, idx: number) => (
+                            <BackpackImageThumbnail
+                              key={idx}
+                              src={image?.src}
+                            />
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
+                </>
+              </>
+            ))}
           </>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+            <FakeItem />
+          </div>
         )}
-
-        <Link
-          href="/backpack/generator"
-          className="bg-purple-700 flex items-center justify-center hover:bg-purple-600 aspect-square rounded-md"
-        >
-          <FaPlus className="w-[30%] h-[30%] text-purple-950" />
-        </Link>
       </div>
     </div>
   );

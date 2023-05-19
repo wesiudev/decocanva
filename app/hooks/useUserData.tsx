@@ -9,18 +9,20 @@ import { setUser } from "@/common/redux/slices/userSlice";
 import { redirect } from "next/navigation";
 export function useUserData() {
   const dispatch = useDispatch();
-  const { images } = useSelector((state: RootState) => state.images);
+  const { images, imagesLoading, limit } = useSelector(
+    (state: RootState) => state.images
+  );
   const { userData } = useSelector((state: RootState) => state.user);
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-    if (user && !images.length) {
-      getUserImages(user?.email).then((res) => dispatch(setImages(res)));
+    if (user && !images.length && !imagesLoading) {
+      getUserImages(user?.email, limit).then((res) => dispatch(setImages(res)));
       getUser(user).then((res) => dispatch(setUser(res)));
-      console.log(userData);
-    } else if (!user && !loading) {
+    }
+    if (!user && !loading) {
       redirect("/auth");
     }
   }, [loading]);
-  return { userData, loading, images };
+  return { userData, loading, images, limit };
 }

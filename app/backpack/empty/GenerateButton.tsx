@@ -1,3 +1,5 @@
+import { useUserData } from "@/app/hooks/useUserData";
+import { updateUserHistory } from "@/common/firebase";
 import { openai } from "@/common/openai/config";
 import { FaImage } from "react-icons/fa";
 export default function GenerateButton(props: any) {
@@ -14,8 +16,9 @@ export default function GenerateButton(props: any) {
     isError,
     displayError,
   } = props;
-
+  const { userData } = useUserData();
   const generateImage = async () => {
+    let accountHistory;
     try {
       setIsError(false);
       setIsGenerationPending(true);
@@ -30,9 +33,24 @@ export default function GenerateButton(props: any) {
       const response = await openai.createImage(imageParameters);
       const image = response.data.data[0].b64_json;
       setImageResponse(image);
+      if (response)
+        accountHistory = {
+          creationTime: Date.now(),
+          action: "Rendered image",
+        };
+      updateUserHistory({
+        email: userData.email,
+        accountHistory: accountHistory,
+      });
       setIsGenerationPending(false);
       setHasImage(true);
     } catch (error: any) {
+      if (error.response)
+        accountHistory = { creationTime: Date.now(), action: "Render failed" };
+      updateUserHistory({
+        email: userData.email,
+        accountHistory: accountHistory,
+      });
       setIsGenerationPending(false);
       setIsError(true);
       displayError(error.response.data.error.message);

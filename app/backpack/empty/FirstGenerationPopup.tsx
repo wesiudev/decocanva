@@ -8,8 +8,9 @@ import { toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
 import { FaImage } from "react-icons/fa";
 import { redirect } from "next/navigation";
-import { setImages } from "@/common/redux/slices/imagesSlice";
+import { pushToImages, setImages } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
+import { useUserData } from "@/app/hooks/useUserData";
 
 export default function FirstGenerationPopup(props: any) {
   const {
@@ -25,9 +26,8 @@ export default function FirstGenerationPopup(props: any) {
     setHasImage,
     isError,
   } = props;
-  const [user, loading] = useAuthState(auth);
+  const { userData } = useUserData();
   const dispatch = useDispatch();
-
   const saveImage = async () => {
     if (hasImage)
       try {
@@ -44,16 +44,16 @@ export default function FirstGenerationPopup(props: any) {
         }).then(
           () =>
             getDownloadURL(imageRef).then((url) => {
-              addImage({
-                author: user?.email,
+              const req = {
+                author: userData?.email,
                 comments: [],
                 creationTime: Date.now(),
                 isPublic: true,
                 likes: 0,
                 prompt: userPrompt,
                 src: url,
-              }),
-                setHasImage(false);
+              };
+              addImage(req), dispatch(pushToImages(req)), setHasImage(false);
               toast.update(id, {
                 render: Msg,
                 type: "success",
@@ -61,10 +61,8 @@ export default function FirstGenerationPopup(props: any) {
                 closeOnClick: true,
                 autoClose: 5000,
                 onClose: () => (
-                  getUserImages(user).then((res) => dispatch(setImages(res))),
-                  setHasImage(false),
-                  setIsGenerationTriggered(false),
-                  redirect("/backpack")
+                  setHasImage(false), setIsGenerationTriggered(false)
+                  // redirect("/backpack")
                 ),
               });
             }),
@@ -114,7 +112,7 @@ export default function FirstGenerationPopup(props: any) {
                   height={512}
                   src={`data:image/png;base64,${imageResponse}`}
                   alt={userPrompt}
-                  className="w-[80%] sm:max-w-[350px] sm:max-h-[350px] lg:w-[650px] lg:h-[650px] my-5"
+                  className="w-[80%] sm:max-w-[400px] sm:max-h-[400px] lg:w-[650px] lg:h-[650px] my-5"
                   style={{ display: imageLoaded ? "block" : "none" }}
                   onLoad={() => setImageLoaded(true)}
                 />

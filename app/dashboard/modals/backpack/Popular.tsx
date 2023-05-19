@@ -62,7 +62,7 @@ export const Popular = ({ images }: DocumentData) => {
             ))}
           </div>
         ) : (
-          <div className="bg-purple-800 w-full h-full flex items-center justify-center p-3 sm:p-3 lg:p-3 text-sm rounded-md">
+          <div className="bg-purple-800 w-full h-max flex items-center justify-center p-3 sm:p-3 lg:p-3 text-sm rounded-md">
             <div className="flex flex-col sm:flex-row w-full items-center">
               <span className="w-full sm:w-3/4 text-lg sm:text-sm flex items-center">
                 To gain more popularity be active user. Create and share images

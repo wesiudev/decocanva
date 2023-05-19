@@ -30,7 +30,13 @@ export default function Dashboard() {
       })
       .catch((error) => {});
   }
-
+  const accountHistory = userData?.accountHistory
+    ?.map((commit: AccountHistoryItem) => commit)
+    .sort(
+      (a: { creationTime: number }, b: { creationTime: number }) =>
+        b.creationTime - a.creationTime
+    );
+  console.log(accountHistory);
   return (
     <>
       {(!images || loading) && <Loading />}
@@ -89,11 +95,11 @@ export default function Dashboard() {
                     </span>
                   </div>
                 </div>
-                <div className="p-5 h-full bg-purple-900 rounded-md w-full mt-2 sm:mt-0">
+                <div className="p-5 h-full bg-purple-900 rounded-md w-full mt-2 sm:mt-0 ">
                   <span className="text-3xl not-italic">History</span>
-                  {userData?.accountHistory?.length && (
-                    <div className="h-[35vh]">
-                      {userData?.accountHistory?.map(
+                  {accountHistory?.length && (
+                    <div className="h-[35vh] overflow-y-scroll scrollbar">
+                      {accountHistory?.map(
                         (item: AccountHistoryItem, idx: number) => (
                           <div className="flex flex-col mt-4" key={idx}>
                             <div className="flex flex-row items-center">

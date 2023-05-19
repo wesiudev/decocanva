@@ -1,5 +1,7 @@
 import Header from "./components/header";
-
+export const metadata = {
+  title: "Decocanva Artworks Powered by OpenAI",
+};
 export default function Home() {
   return (
     <>

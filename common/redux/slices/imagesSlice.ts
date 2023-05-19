@@ -3,24 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
   images: [],
-  loadingImages: false
+  loadingImages: true,
+  limit:12,
 };
 
 export const imagesSlice = createSlice({
   name: "images",
   initialState,
   reducers: {
+    setLimit: (state, action) => {
+      state.limit = action.payload
+    },
     setImages: (state, action) => {
-      state.loadingImages = true
-      state.images = [...state.images, ...action.payload]
+      state.images = action.payload
       state.loadingImages = false
     },
+    pushToImages: (state, action) => {
+      state.images.push(action.payload)
+    },
+
     clearImages: (state, action) => {
       state.images = []
     },
   },
 });
 
-export const { setImages, clearImages } = imagesSlice.actions;
+export const { setImages, clearImages, pushToImages, setLimit } = imagesSlice.actions;
 
 export default imagesSlice.reducer;

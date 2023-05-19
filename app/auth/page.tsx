@@ -1,5 +1,4 @@
 "use client";
-
 import {
   GoogleAuthProvider,
   signInWithRedirect,
@@ -19,7 +18,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 import Loading from "./loading";
-import { useUserData } from "../hooks/useUserData";
 
 export default function Login() {
   const [user, loading] = useAuthState(auth);
@@ -104,7 +102,7 @@ export default function Login() {
   }
   return (
     <>
-      <section className="flex flex-col md:flex-row h-screen items-center">
+      <section className="flex flex-col md:flex-row h-screen items-center font-sans">
         <div className="bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 hidden lg:block w-full md:w-3/5 xl:w-2/3 h-screen relative">
           <div
             style={{
