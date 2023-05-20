@@ -1,17 +1,21 @@
 "use client";
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { redirect } from "next/navigation";
 
 const initialState: any = {
-  userData: {}
+  userData: {},
+  userPrompt:""
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action) => {
+    setUser: (state, action:PayloadAction<string>) => {
       state.userData = action.payload
+    },
+    setUserPrompt:(state, action:PayloadAction<string>) => {
+      state.userData.userPrompt = action.payload
     },
     logout: (state) => {
       state.userData = {}
@@ -20,6 +24,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, logout } = userSlice.actions;
+export const { setUser, logout, setUserPrompt } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -67,8 +67,8 @@ export default function GenerateButton(props: any) {
       <button
         disabled={isGenerationPending || isError}
         className={`disabled:${
-          isError ? "bg-red-500" : "bg-purple-500"
-        } disabled:opacity-50 disabled:cursor-not-allowed flex flex-row items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8`}
+          isError ? "bg-red-500" : ""
+        } disabled:opacity-50 disabled:cursor-not-allowed flex flex-row  bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in px-3 shadow-sm shadow-purple-950 items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8`}
         onClick={handleImageGeneration}
       >
         {!isGenerationPending && (

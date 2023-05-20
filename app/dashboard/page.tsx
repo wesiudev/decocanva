@@ -36,7 +36,6 @@ export default function Dashboard() {
       (a: { creationTime: number }, b: { creationTime: number }) =>
         b.creationTime - a.creationTime
     );
-  console.log(accountHistory);
   return (
     <>
       {(!images || loading) && <Loading />}

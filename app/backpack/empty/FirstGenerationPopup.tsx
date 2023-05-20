@@ -86,7 +86,7 @@ export default function FirstGenerationPopup(props: any) {
                   Congratulations!
                 </strong>
                 <span className="text-2xl sm:text-2xl mx-auto text-gray-100 text-center py-2">
-                  You just generated your first{" "}
+                  You just generated a new
                   <strong className="text-purple-600"> canva</strong>!
                 </span>
               </div>
