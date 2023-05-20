@@ -8,7 +8,6 @@ import GenerateButton from "../../empty/GenerateButton";
 import { CreateImageRequestSizeEnum } from "openai";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 import FirstGenerationPopup from "../../empty/FirstGenerationPopup";
 export default function RenderFromText() {
   const [isTutorialOpen, setTutorialOpen] = useState(false);

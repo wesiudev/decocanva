@@ -3,7 +3,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import InterfaceBlock from "./components/InterfaceBlock";
 import { BsBodyText } from "react-icons/bs";
 import { TbPrompt } from "react-icons/tb";
-import Renderer from "./text/renderer";
 
 export default function Generator() {
   return (
