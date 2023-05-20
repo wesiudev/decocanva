@@ -7,6 +7,8 @@ import { useState } from "react";
 import GenerateButton from "../../empty/GenerateButton";
 import { CreateImageRequestSizeEnum } from "openai";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import FirstGenerationPopup from "../../empty/FirstGenerationPopup";
 export default function RenderFromText() {
   const [isTutorialOpen, setTutorialOpen] = useState(false);
@@ -33,47 +35,57 @@ export default function RenderFromText() {
         isTutorialOpen={isTutorialOpen}
         setTutorialOpen={setTutorialOpen}
       />
-      <div className="w-3/4 mx-auto font-sans min-h-[90vh] flex items-center relative ">
+      <div className="w-3/4 mx-auto font-sans min-h-[90vh] flex items-center relative pt-28">
         <BsBodyText className="text-gray-50 w-[80px] h-[80px] sm:h-[15vw] sm:w-[15vw] lg:w-[125px] lg:h-[125px] opacity-20 absolute -left-[20px] top-10 sm:-left-[40px] sm:top-[50px]" />
-        <div className="text-white text-3xl h-max flex flex-col">
-          <span>Render an image from text</span>
-          <span className="w-[70vw] sm:w-[50vw] lg:w-[30vw] mt-6 text-xl italic font-light">
-            With this tool, you can bring your ideas to life by generating
-            images based on your description.
-          </span>
-          <div className="flex flex-col-reverse sm:flex-col">
-            <button
-              onClick={() => setTutorialOpen(true)}
-              className="flex flex-row items-center group mt-6 sm:mt-8 w-max"
-            >
-              <FaInfoCircle className="text-gray-50 w-5 h-5 mr-1" />
-              <div className="text-lg w-max outline-white border-white italic font-light">
-                Tutorial
-              </div>
-              <FaArrowRight className="invisible w-3 h-3 ml-2 group-hover:scale-150 group-hover:translate-x-1 group-hover:visible ease-in duration-75" />
-            </button>
+        <div className="text-white text-3xl h-max w-screen sm:gap-x-12 lg:gap-x-12 grid grid-cols-1 lg:grid-cols-2">
+          <div className="flex flex-col mt-0 lg:mt-12">
+            <span>Render an image from text</span>
+            <span className="w-[70vw] sm:w-[50vw] lg:w-[30vw] mt-6 text-xl italic font-light">
+              With this tool, you can bring your ideas to life by generating
+              images based on your description.
+            </span>
+            <div className="flex sm:flex-col">
+              <button
+                onClick={() => setTutorialOpen(true)}
+                className="flex flex-row items-center group mt-6 sm:mt-8 w-max"
+              >
+                <FaInfoCircle className="text-gray-50 w-5 h-5 mr-1" />
+                <div className="text-lg w-max outline-white border-white italic font-light">
+                  Tutorial
+                </div>
+                <FaArrowRight className="invisible w-3 h-3 ml-2 group-hover:scale-150 group-hover:translate-x-1 group-hover:visible ease-in duration-75" />
+              </button>
+            </div>
           </div>
-          <textarea
-            placeholder="A sunshine on the desert with a smiling cactus, ultrarealistic, high resolution"
-            className="mt-20 z-20 w-full p-2 rounded-md text-xl lg:text-xl min-h-[25vh] bg-gray-50 text-black bg-opacity-80 placeholder:text-purple-800 outline-none"
-            value={userPrompt}
-            onChange={(e) => setUserPrompt(e.target.value)}
-          />
-          <GenerateButton
-            setIsGenerationPending={setIsGenerationPending}
-            setImageLoaded={setImageLoaded}
-            setImageResponse={setImageResponse}
-            setHasImage={setHasImage}
-            setIsError={setIsError}
-            userPrompt={userPrompt}
-            size={size}
-            hasImage={hasImage}
-            isGenerationPending={isGenerationPending}
-            imageResponse={imageResponse}
-            setIsGenerationTriggered={setIsGenerationTriggered}
-            displayError={displayError}
-            isError={isError}
-          />
+          <div className="flex flex-col w-full lg:w-[40vw] pb-12">
+            <span className="mb-6 text-3xl mt-12 lg:mt-0">
+              Enter your prompt
+            </span>
+            <div className="flex flex-row h-max mt-5">
+              <FaArrowRight className="mr-1" />
+              <textarea
+                placeholder="A sunshine on the desert with a smiling cactus, ultrarealistic, high resolution"
+                className="z-20 w-full p-2 rounded-md text-xl lg:text-xl min-h-[25vh] bg-gray-50 text-black bg-opacity-80 placeholder:text-purple-800 outline-none"
+                value={userPrompt}
+                onChange={(e) => setUserPrompt(e.target.value)}
+              />
+            </div>
+            <GenerateButton
+              setIsGenerationPending={setIsGenerationPending}
+              setImageLoaded={setImageLoaded}
+              setImageResponse={setImageResponse}
+              setHasImage={setHasImage}
+              setIsError={setIsError}
+              userPrompt={userPrompt}
+              size={size}
+              hasImage={hasImage}
+              isGenerationPending={isGenerationPending}
+              imageResponse={imageResponse}
+              setIsGenerationTriggered={setIsGenerationTriggered}
+              displayError={displayError}
+              isError={isError}
+            />
+          </div>
           {!isError && (
             <FirstGenerationPopup
               isGenerationTriggered={isGenerationTriggered}

@@ -44,7 +44,6 @@ export default function BackpackEmpty() {
         </Link>
       )}
       <div className="lg:w-full w-full min-h-screen flex flex-col lg:flex-row mx-auto from-zinc-900 to-purple-950 bg-gradient-to-br pb-12 ">
-        <ToastContainer />
         <div className="max-h-screen w-full flex items-center relative mt-[122px] lg:mt-10">
           <div className="absolute -bottom-12 left-24 bg-purple-400 hue-rotate-[45] w-16 h-16 rounded-full bg-opacity-0 lg:bg-opacity-50" />
           <div className="absolute bottom-12 left-12 bg-purple-500 hue-rotate-30 w-12 h-12 rounded-full bg-opacity-0 lg:bg-opacity-50" />

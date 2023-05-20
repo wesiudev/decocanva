@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { addImage, storage } from "@/common/firebase";
 import Image from "next/image";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
 import { FaImage } from "react-icons/fa";
 import { pushToImages } from "@/common/redux/slices/imagesSlice";
@@ -76,6 +76,7 @@ export default function FirstGenerationPopup(props: any) {
   }
   return (
     <>
+      <ToastContainer />
       {isGenerationTriggered && userPrompt.length && (
         <div className="z-50 fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-black bg-opacity-80 ">
           <div className="h-max sm:w-max w-[90vw] bg-purple-950 rounded-xl px-3 sm:px-12 flex flex-col justify-evenly">
