@@ -6,7 +6,7 @@ import { TbPrompt } from "react-icons/tb";
 
 export default function Generator() {
   return (
-    <div className="w-[90vw] sm:w-3/4 mx-auto">
+    <div className="w-[90vw] sm:w-3/4 mx-auto font-sans">
       <Link
         href="/backpack"
         className="pt-[24px] sm:pt-[4vw] hover:underline text-white flex flex-row items-center text-2xl z-50 w-max"
@@ -27,13 +27,13 @@ export default function Generator() {
           title="Render image from text"
           Icon={BsBodyText}
           description="You can render an image by writing a description for our generator."
-          destination="GenerateFromText"
+          destination="text"
         />
         <InterfaceBlock
           title="Render image with Prompter"
           Icon={TbPrompt}
           description="Use prompter to render images by describing details step by step."
-          destination="GenerateWithPrompter"
+          destination="prompter"
         />
       </div>
     </div>

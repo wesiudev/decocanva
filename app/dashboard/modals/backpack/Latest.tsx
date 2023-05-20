@@ -2,6 +2,7 @@
 import capitalizeString from "@/app/utils/CapitalizeString";
 import { DocumentData } from "firebase/firestore/lite";
 import Image from "next/image";
+import Link from "next/link";
 import { FaComment, FaFire, FaHeart } from "react-icons/fa";
 
 export const Latest = ({ images }: DocumentData) => {
@@ -46,6 +47,12 @@ export const Latest = ({ images }: DocumentData) => {
             </div>
           </div>
         ))}
+        <Link
+          href="/backpack/generator"
+          className="w-full py-2 flex flex-row justify-center rounded-lg mt-3 bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in px-3 shadow-sm shadow-purple-950"
+        >
+          Generate
+        </Link>
       </div>
     </div>
   );

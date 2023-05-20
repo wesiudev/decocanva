@@ -4,7 +4,7 @@ import { SlBadge } from "react-icons/sl";
 
 export default function Loading() {
   return (
-    <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900">
+    <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 font-sans italic text-lg">
       <div className="mx-auto w-[90vw] pt-12">
         <div className="text-gray-50 text-4xl flex flex-row w-full">
           <div className="ml-2">

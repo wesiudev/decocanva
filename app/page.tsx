@@ -17,8 +17,10 @@ export default function Home() {
           </div>
           <div className="font-light italic mt-3 text-xl xl:text-3xl text-gray-50 text-center sm:text-left z-30">
             We are not scared of{" "}
-            <span className="lg:text-purple-600 text-gray-50">AI</span> on{" "}
-            <span className="lg:text-purple-600 text-gray-50">canvas</span>
+            <span className="lg:text-purple-600 text-gray-50">
+              Artificial Intelligence
+            </span>{" "}
+            on <span className="lg:text-purple-600 text-gray-50">canvas</span>
             <div className="relative">
               <span className="absolute -left-8 -top-4 h-0.5 w-4 bg-purple-500 rounded-sm"></span>
             </div>
