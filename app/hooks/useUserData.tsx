@@ -18,7 +18,7 @@ export function useUserData() {
   useEffect(() => {
     if (user && !images.length && !imagesLoading) {
       getUserImages(user?.email, limit).then((res) => dispatch(setImages(res)));
-      getUser(user).then((res) => dispatch(setUser(res)));
+      getUser(user).then((res: any) => dispatch(setUser(res)));
     }
     if (!user && !loading) {
       redirect("/auth");
