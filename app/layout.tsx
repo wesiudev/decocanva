@@ -2,6 +2,7 @@ import { Providers } from "@/common/redux/Provider";
 import "../styles/globals.css";
 import localFont from "next/font/local";
 export const metadata = {
+  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.png",
   },

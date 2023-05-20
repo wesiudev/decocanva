@@ -1,14 +1,12 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { addImage, auth, getUserImages, storage } from "@/common/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { addImage, storage } from "@/common/firebase";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
 import { FaImage } from "react-icons/fa";
-import { redirect } from "next/navigation";
-import { pushToImages, setImages } from "@/common/redux/slices/imagesSlice";
+import { pushToImages } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { useUserData } from "@/app/hooks/useUserData";
 
