@@ -12,14 +12,14 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
         {images?.map((image: ImageProps, idx: number) => (
           <div key={idx} className="relative group">
             <Image
+              priority
               width={512}
               height={512}
               src={image.src}
               alt=""
               key={idx}
-              className="rounded-none group-hover:rounded-md ease-in duration-200"
             />
-            <div className="absolute bottom-0 left-0 p-2 bg-black text-white w-full opacity-0 group-hover:opacity-100 ease-in duration-200 rounded-none group-hover:rounded-b-md">
+            <div className="absolute bottom-0 left-0 p-2 bg-black text-white w-full opacity-0 group-hover:opacity-100 ease-in duration-200">
               {truncate(capitalizeString(image.prompt)!, 38)}
             </div>
           </div>

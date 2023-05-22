@@ -6,10 +6,11 @@ import Hero from "../auth/hero/Hero";
 import { Search } from "./components/Search";
 
 export default async function BrowseImages() {
-  const req = await fetch("https://decocanva.com/api/images", {
+  const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/images`, {
     headers: {
       authorization: process.env.API_KEY!,
     },
+    method: "GET",
   });
   const data = await req.json();
   store.dispatch(setBrowseImages(data));
