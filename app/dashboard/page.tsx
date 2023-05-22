@@ -20,6 +20,7 @@ import { logout } from "@/common/redux/slices/userSlice";
 import { AccountHistoryItem } from "@/types";
 import moment from "moment";
 import Link from "next/link";
+import Badges from "./modals/badges";
 export default function Dashboard() {
   const { images, userData, loading } = useUserData();
   const dispatch = useDispatch();
@@ -128,6 +129,9 @@ export default function Dashboard() {
               <BackpackModal images={images} />
               <div className="mt-6 gap-x-3 grid sm:grid-cols-2 gap-y-6 sm:gap-y-0">
                 <GalleryModal />
+                <Badges />
+              </div>
+              <div className="mt-6 gap-x-3 grid sm:grid-cols-2 gap-y-6 sm:gap-y-0">
                 <SettingsModal />
               </div>
             </div>

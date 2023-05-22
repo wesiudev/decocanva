@@ -7,7 +7,6 @@ import FirstGenerationPopup from "./FirstGenerationPopup";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 import { redirect } from "next/navigation";
 import { useUserData } from "../../hooks/useUserData";
 

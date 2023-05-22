@@ -1,10 +1,11 @@
-"use client";
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
   images: [],
   loadingImages: true,
   limit:12,
+  browseImages: []
 };
 
 export const imagesSlice = createSlice({
@@ -18,6 +19,10 @@ export const imagesSlice = createSlice({
       state.images = action.payload
       state.loadingImages = false
     },
+    setBrowseImages: (state, action) => {
+      state.browseImages = action.payload
+      state.loadingImages = false
+    },
     pushToImages: (state, action) => {
       state.images.push(action.payload)
     },
@@ -28,6 +33,6 @@ export const imagesSlice = createSlice({
   },
 });
 
-export const { setImages, clearImages, pushToImages, setLimit } = imagesSlice.actions;
+export const { setImages, clearImages, pushToImages, setLimit,setBrowseImages } = imagesSlice.actions;
 
 export default imagesSlice.reducer;

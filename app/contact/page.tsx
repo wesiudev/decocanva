@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <>
       <Header />
-      <div className="overflow-hidden relative flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900 to-purple-900 min-h-screen w-screen">
+      <div className="font-sans overflow-hidden relative flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900 to-purple-900 min-h-screen w-screen">
         <div className="opacity-80 absolute -left-[15%] -top-[15%] bg-purple-900 h-[60vh] w-[60vh] sm:h-[80vh] sm:w-[80vh] rounded-full"></div>
         <div className="flex flex-row w-screen lg:w-[96vw] mx-auto items-center">
           <div className="h-[70vh] w-full flex flex-col justify-evenly z-30 px-10">

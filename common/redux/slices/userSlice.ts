@@ -1,4 +1,4 @@
-"use client";
+
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { redirect } from "next/navigation";
 

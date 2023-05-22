@@ -11,10 +11,7 @@ export default function Info({ text, destination, buttonText }: Info) {
       <div className="flex flex-col lg:flex-row lg:justify-between">
         <div className="flex flex-row items-center">
           <BsInfoCircleFill className="h-5 w-5 mr-2" />
-          <span className="font-light">
-            In order to share your images, you have to switch your profile
-            settings to public.
-          </span>
+          <span className="font-light">{text}</span>
         </div>
         <Link
           href={`/${destination}`}

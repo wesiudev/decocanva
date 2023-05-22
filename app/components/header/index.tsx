@@ -1,15 +1,13 @@
 "use client";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../common/firebase";
-import { useState } from "react";
-import { FaSignInAlt, FaUser } from "react-icons/fa";
+import { FaBlog, FaImage, FaPhone, FaSignInAlt, FaUser } from "react-icons/fa";
 import Link from "next/link";
 export default function Header() {
   const [user, loading] = useAuthState(auth);
-  const [isNavOpen, setNavOpen] = useState(false);
   return (
     <>
-      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-40">
+      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-40 font-sans">
         <div className="w-[90vw] mx-auto flex flex-row justify-between py-3">
           <div className="flex flex-row w-max h-max">
             <Link
@@ -19,17 +17,30 @@ export default function Header() {
               decocanva
             </Link>
           </div>
-          <ul className="flex flex-row items-center text-gray-100">
-            <li className="mx-3">
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li className="mx-3">Blog</li>
-            <li className="mx-3">About</li>
-          </ul>
-          <div
-            onClick={() => setNavOpen(!isNavOpen)}
-            className="cursor-pointer flex flex-row justify-center items-center"
-          >
+          <div className="fixed w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800 ">
+            <Link
+              href="/contact"
+              className="flex flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+            >
+              <FaPhone className="h-6 w-6" />
+              <span> Contact</span>
+            </Link>
+            <Link
+              href="/browse"
+              className="flex flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+            >
+              <FaImage className="h-6 w-6" />
+              <span>Explore</span>
+            </Link>
+            <Link
+              href="/blog"
+              className="flex flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+            >
+              <FaBlog className="h-6 w-6" />
+              <span>Blog</span>
+            </Link>
+          </div>
+          <div className="cursor-pointer flex flex-row justify-center items-center">
             {!user && (
               <Link href="/auth">
                 <div className="flex flex-row items-center">

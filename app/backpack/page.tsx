@@ -46,15 +46,21 @@ export default function Backpack() {
             <div className="opacity-80 h-5 w-2 bg-purple-800 hue-rotate-60 rotate-[20deg] rounded-sm" />
             <div className="opacity-80 h-4 w-1 bg-purple-800 -rotate-45 rounded-sm" />
           </div>
-          <div className="ml-3 italic ">Backpack</div>
+          <div className="w-full ml-3 italic flex flex-row justify-between">
+            <span>Backpack</span>{" "}
+            <div className="bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in  items-center justify-center shadow-sm shadow-black py-2 px-4 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform w-max text-2xl rounded-lg">
+              <Link href="/backpack/generator/text">Generator</Link>
+            </div>
+          </div>
         </div>
-        <Info
+        {/* <Info
           destination="privacy"
           buttonText="Change it here"
           text="In order to share your images, you have to switch your profile
               settings to public."
-        />
+        /> */}
       </div>
+
       <div className="mt-12">
         {images.length ? (
           <>

@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import FirstGenerationPopup from "../../empty/FirstGenerationPopup";
 export default function RenderFromText() {
   const [isTutorialOpen, setTutorialOpen] = useState(false);
-  const [prompt, setPrompt] = useState("");
   const [isGenerationPending, setIsGenerationPending] =
     useState<boolean>(false);
   const [userPrompt, setUserPrompt] = useState("");
@@ -64,7 +63,7 @@ export default function RenderFromText() {
               <FaArrowRight className="mr-1" />
               <textarea
                 placeholder="A sunshine on the desert with a smiling cactus, ultrarealistic, high resolution"
-                className="z-20 w-full p-2 rounded-md text-xl lg:text-xl min-h-[25vh] bg-gray-50 text-black bg-opacity-80 placeholder:text-purple-800 outline-none"
+                className="z-20 w-full p-2 rounded-md text-xl lg:text-xl min-h-[25vh] bg-gray-50 text-black bg-opacity-80 placeholder:text-gray-500 outline-none"
                 value={userPrompt}
                 onChange={(e) => setUserPrompt(e.target.value)}
               />
