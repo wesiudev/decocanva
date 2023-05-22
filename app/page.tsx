@@ -29,7 +29,7 @@ export default function Home() {
           </div>
           <div className="flex flex-row z-30 w-full justify-evenly sm:w-max mt-8">
             <Link
-              href="/blog/about"
+              href="/blog"
               className="py-3 px-5 bg-gray-500 hover:bg-gray-400 rounded-lg sm:text-xl text-gray-100"
             >
               Read more
