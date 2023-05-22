@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 
 export const browseImages = createApi({
   reducerPath: "browseImages",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api/images" }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV  }),
   tagTypes: ["pokemon"],
   endpoints: (builder) => ({
     getImages: builder.query<ImageProps[], void>({
