@@ -1,9 +1,9 @@
 import { getAllImages } from "@/common/firebase";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+
+import { NextRequest, NextResponse } from "next/server";
 import { headers } from 'next/headers';
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   const headersList = headers();
   const referer = headersList.get('authorization')
   
