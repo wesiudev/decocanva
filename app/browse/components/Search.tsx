@@ -5,12 +5,11 @@ export const Search = () => {
       <div className="flex flex-row h-full items-center">
         <input
           type="text"
-          className="h-full w-full sm:w-1/2 text-white bg-purple-600 p-3 outline-none rounded-l-md placeholder:text-white"
+          className="cursor-pointer hover:bg-purple-500 h-full sm:w-2/4 lg:w-1/4 focus:w-1/2 ease-in duration-150 text-white bg-purple-600 p-3 outline-none rounded-l-md placeholder:text-white"
           placeholder="Search for images"
         />
-        <button className="h-full bg-purple-600 flex items-center pr-2 rounded-r-md relative">
-          <div className="border-l border-purple-400 absolute -left-[10px] h-4/5"></div>
-          <BsSearch className="h-3/4 w-max text-white " />
+        <button className="h-full bg-purple-600 flex items-center px-4 rounded-r-md relative hover:bg-purple-700">
+          <BsSearch className="h-2/4 w-max text-white px-2" />
         </button>
       </div>
     </div>
