@@ -11,7 +11,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
   const [currentImage, setCurrentImage] = useState<ImageProps>();
   return (
     <div className="relative">
-      {currentImage ? (
+      {/* {currentImage ? (
         <div className="fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] h-[80vh] rounded-lg z-50">
           <div className="w-[90vw] lg:w-[80vw] h-[50vh] overflow-y-scroll scrollbar">
             <Layout>
@@ -22,7 +22,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
             </Layout>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-3 mx-auto mt-3">
         {images?.map((image: ImageProps, idx: number) => (
           <div key={idx} className="relative">
