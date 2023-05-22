@@ -39,7 +39,6 @@
     "openai": "^3.2.1",
     "paginate-array": "^2.1.0",
     "popmotion": "^11.0.5",
-
     "react-firebase-hooks": "^5.1.1",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",

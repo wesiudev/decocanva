@@ -2,14 +2,10 @@
 import Link from "next/link";
 import Header from "./components/header";
 import Hero from "./auth/hero/Hero";
-import Head from "next/head";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>My page title</title>
-      </Head>
       <main className="font-sans relative overflow-hidden items-center min-h-screen bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 flex flex-row py-2 px-3 lg:px-0">
         <Hero />
         <Header />
