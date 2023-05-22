@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/backpack/generator/text/page.jsx", "app/browse/components/CanvasFiber.js", "app/browse/components/Box.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx", ".next/types/**/*.ts", "app/backpack/generator/text/page.jsx", "app/browse/components/CanvasFiber.js", "app/browse/components/Box.js"],
   "exclude": ["node_modules"]
 }
