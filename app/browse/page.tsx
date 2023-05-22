@@ -4,7 +4,7 @@ import SSRImageGrid from "./components/SSRImagesGrid";
 import Link from "next/link";
 
 export default async function BrowseImages() {
-  const req = await fetch("http://localhost:3000/api/images");
+  const req = await fetch("https://decocanva.com/api/images");
   const data = await req.json();
   store.dispatch(setBrowseImages(data));
   return (
