@@ -1,3 +1,4 @@
+"use client";
 import { SlBadge } from "react-icons/sl";
 
 export default function Badges() {

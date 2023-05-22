@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { BsInfoCircleFill } from "react-icons/bs";
 interface Info {

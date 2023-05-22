@@ -1,4 +1,5 @@
 "use client";
+
 import { BsBodyText } from "react-icons/bs";
 import { FaArrowRight, FaInfoCircle } from "react-icons/fa";
 import { TutorialWindow } from "../components/TutorialWindow";

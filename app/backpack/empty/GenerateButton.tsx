@@ -1,3 +1,4 @@
+"use client";
 import { useUserData } from "@/app/hooks/useUserData";
 import { updateUserHistory } from "@/common/firebase";
 import { openai } from "@/common/openai/config";

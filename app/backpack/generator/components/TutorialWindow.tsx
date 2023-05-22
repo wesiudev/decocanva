@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import arrayPaginate from "array-paginate";
 export type Step = {

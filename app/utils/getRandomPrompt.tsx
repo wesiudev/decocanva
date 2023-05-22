@@ -1,3 +1,4 @@
+"use client";
 import { arrayOfRandomPrompts } from "./utilAssets/randomPrompts";
 
 export function getRandomPrompt(prompt: string) {
