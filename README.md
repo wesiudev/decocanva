@@ -1,7 +1,8 @@
-> Image generator powered by openai api
->www.decocanva.com
->Stack:
-- `react`
+Image generator powered by openai api
+>[Liv here](https://www.decocanva.com/)
+
+`Stack:`
+- react
 - next13 server side components
 - firebase
 - threejs
